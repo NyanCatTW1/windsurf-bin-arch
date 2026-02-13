@@ -21,9 +21,9 @@ This will download and execute the installer script. You will be prompted to cho
 ### Manual Installation
 
 ```bash
-# Clone the AUR package
-git clone https://aur.archlinux.org/windsurf-bin.git
-cd windsurf-bin
+# Clone this repository
+git clone https://github.com/NyanCatTW1/windsurf-bin-arch.git
+cd windsurf-bin-arch/package
 
 # Build and install either the native or electron version
 makepkg -si windsurf-bin
@@ -35,16 +35,10 @@ makepkg -si windsurf-bin-electron-latest
 
 This PKGBUILD uses GitHub Actions to automate maintenance:
 
-1. **Version Checking and Publishing** (`update.yml`)
+1. **Version Checking** (`update.yml`)
 
    - Runs every 3 hours to check for new upstream versions
-   - Creates and auto-merges pull requests when updates are available
-   - Directly triggers the publish workflow when updates are detected
-
-2. **AUR Publishing** (`publish.yml`) (disabled)
-   - Reusable workflow called by the update workflow
-   - Publishes the updated package to the AUR
-   - Can also be manually triggered when needed
+   - Creates pull requests when updates are available (manual merge required)
 
 ## Note
 
@@ -55,7 +49,6 @@ This PKGBUILD conflicts with the `windsurf` AUR package, as both cannot be insta
 If you encounter any problems with this PKGBUILD:
 
 1. [Open an issue](https://github.com/NyanCatTW1/windsurf-bin-arch/issues) in this repository
-2. Comment on the [AUR package page](https://aur.archlinux.org/packages/windsurf-bin-arch)
 
 ## License
 

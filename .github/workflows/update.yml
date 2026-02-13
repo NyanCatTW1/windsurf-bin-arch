@@ -69,7 +69,7 @@ jobs:
           sed -i "s|^sha256sums=('.*'\$|sha256sums=('$SHA256SUM'|" package/PKGBUILD
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@4e1beaa7521e8b457b572c090b25bd3db56bf1c5 # v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: update windsurf to version ${{ needs.check-version.outputs.version }}"
@@ -82,15 +82,6 @@ jobs:
           base: "main"
           labels: "automated pr"
 
-      - name: Merge Pull Request
-        if: ${{ steps.cpr.outputs.pull-request-operation == 'created' }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
-        run: |
-          echo "Attempting to merge PR #${PR_NUMBER}"
-          gh pr merge "$PR_NUMBER" --merge --delete-branch --repo "${{ github.repository }}"
-          echo "PR #${PR_NUMBER} merged."
   # Call publish workflow after PR is merged
   # call-publish:
   #   needs: [update-package, check-version]
