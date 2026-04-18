@@ -2,7 +2,7 @@
 
 pkgbase=windsurf-bin
 pkgname=(windsurf-bin{,-electron-latest})
-pkgver=1.9600.41
+pkgver=2.0.61
 pkgrel=1
 arch=('x86_64')
 url="https://windsurf.com/"
@@ -25,7 +25,7 @@ options=('!strip')
 makedepends=(tar sed desktop-file-utils)
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 		"code.sh")
-sha256sums=('ddcb1098231ea5a44d38461deb742e41d3fe2ea756275016903016f753bd7ea0'
+sha256sums=('94a52c17801084941edbccd89a7fd82af3875cd491e0a27dd06ba6a7e229556d'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 build() {
 	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
